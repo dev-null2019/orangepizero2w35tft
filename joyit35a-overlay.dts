@@ -1,0 +1,48 @@
+/dts-v1/;
+/plugin/;
+/ {
+    compatible = "allwinner,sun50i-h616";
+    fragment@0 {
+        target = <&spi1>;
+        __overlay__ {
+            status = "okay";
+	    cs-gpios = <&pio 7 5 0>; /*PH5=CS0 PH9=CS1*/
+            ili9486: ili9486@1 {
+                compatible = "ilitek,ili9486";
+                reg = <0>;
+                pinctrl-names = "default";
+                spi-max-frequency = <48000000>;
+                rotation = <180>;
+                bgr = <0>;
+                fps = <30>;
+                buswidth = <8>;
+                reset-gpios = <&pio 8 6 0>; /* PI6 */
+                dc-gpios = <&pio 7 4 0>; /* PH4 */
+                debug = <0>;
+                init = <0x10000b0 0x00 0x1000011 0x20000ff 0x100003a 0x55 0x1000036 0x28 0x10000c2 0x44 0x10000c5 0x00 0x00 0x00 0x00 0x10000e0 0x0f 0x1f 0x1c 0x0c 0x0f 0x08 0x48 0x98 0x37 0x0a 0x13 0x04 0x11 0x0d 0x00 0x10000e1 0x0f 0x32 0x2e 0x0b 0x0d 0x05 0x47 0x75 0x37 0x06 0x10 0x03 0x24 0x20 0x00 0x10000e2 0x0f 0x32 0x2e 0x0b 0x0d 0x05 0x47 0x75 0x37 0x06 0x10 0x03 0x24 0x20 0x00 0x1000036 0x28 0x1000011 0x1000029>;
+            };
+
+            ads7846: ads7846@0 {
+                compatible = "ti,ads7846";
+                reg = <1>;
+                pinctrl-names = "default";
+                spi-max-frequency = <2000000>;
+                interrupts = <7 2 1>; /* PH2 - IRQ */
+                interrupt-parent = <&pio>;
+                pendown-gpio = <&pio 7 2 0>; /* PH2 */
+                
+                /* OPTIONS */
+                ti,keep-vref-on = <1>;
+                ti,pressure-min = /bits/ 16 <10>;
+                ti,pressure-max = /bits/ 16 <1000>;
+                ti,debounce-rep = /bits/ 16 <1>;
+                ti,debounce-tol = /bits/ 16 <2>;
+                ti,debounce-max = /bits/ 16 <100>;
+                ti,settle-delay-usec = /bits/ 16 <20>;
+                ti,penirq-recheck-delay-usecs = /bits/ 16 <20>;
+                ti,x-plate-ohms = /bits/ 16 <400>;
+                ti,y-plate-ohms = /bits/ 16 <400>;
+	    };
+        };
+    };
+};
