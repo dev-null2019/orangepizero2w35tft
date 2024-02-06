@@ -1,5 +1,7 @@
 # Device tree overlay and xorg config files for a 3.5 inch SPI ili9486 display on the Orangepi Zero 2W
 
+I used this display https://joy-it.net/en/products/RB-TFT3.5 - but I think the waveshare 35a has a similar pinout. Take a look at the pinout diagram! </br>
+</br>
 Steps to make it work:
 
 git clone https://github.com/dev-null2019/orangepizero2w35tft</br>
