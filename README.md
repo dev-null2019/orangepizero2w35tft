@@ -3,10 +3,13 @@
 Steps to make it work:
 
 git clone https://github.com/dev-null2019/orangepizero2w35tft
+
 cd orangepizero2w35tft
 
 sudo mv ./80-calibration.conf /usr/share/X11/xorg.conf.d 
+
 sudo mv ./99-fbdev.conf /usr/share/X11/xorg.conf.d
+
 sudo orangepi-add-overlay ./joyit35a-overlay.dts
 
 
