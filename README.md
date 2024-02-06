@@ -2,18 +2,13 @@
 
 Steps to make it work:
 
-git clone https://github.com/dev-null2019/orangepizero2w35tft
+git clone https://github.com/dev-null2019/orangepizero2w35tft</br>
+cd orangepizero2w35tft</br>
 
-cd orangepizero2w35tft
+sudo mv ./80-calibration.conf /usr/share/X11/xorg.conf.d </br>
+sudo mv ./99-fbdev.conf /usr/share/X11/xorg.conf.d</br>
+sudo orangepi-add-overlay ./joyit35a-overlay.dts</br>
 
-sudo mv ./80-calibration.conf /usr/share/X11/xorg.conf.d 
-
-sudo mv ./99-fbdev.conf /usr/share/X11/xorg.conf.d
-
-sudo orangepi-add-overlay ./joyit35a-overlay.dts
-
-
-add fbtft to /etc/modules
-
+add fbtft to /etc/modules</br>
 
 reboot
